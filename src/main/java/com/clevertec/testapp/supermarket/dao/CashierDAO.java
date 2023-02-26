@@ -28,7 +28,7 @@ public class CashierDAO implements DAO<Cashier> {
 
     @Override
     public boolean update(Cashier obj) {
-        map.put(obj.getId(), obj); // просто по ключу заменяет объект в коллекции
+        map.put(obj.getId(), obj);
         return true;
     }
 
