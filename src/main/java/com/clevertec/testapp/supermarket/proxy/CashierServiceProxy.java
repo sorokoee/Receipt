@@ -30,21 +30,21 @@ public class CashierServiceProxy implements CashierService {
     }
     @Override
     public Cashier get(Long id) {
-        return null;
+        return cashierService.get(id);
     }
 
     @Override
     public void post(Cashier cashier) {
-
+        cashierService.post(cashier);
     }
 
     @Override
     public void delete(Long id) {
-
+        cashierService.delete(id);
     }
 
     @Override
     public void put(Cashier cashier) {
-
+        cashierService.put(cashier);
     }
 }

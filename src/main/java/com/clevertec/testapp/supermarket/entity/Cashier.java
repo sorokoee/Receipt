@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Cashier extends BaseModel  {
     private String name;
     private char gender;
@@ -18,5 +17,13 @@ public class Cashier extends BaseModel  {
     public Cashier(Long id, String name) {
         super(id);
         this.name = name;
+    }
+
+    public Cashier(Long id, String name, char gender, double salary, String email) {
+        super(id);
+        this.name = name;
+        this.gender = gender;
+        this.salary = salary;
+        this.email = email;
     }
 }
