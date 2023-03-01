@@ -8,13 +8,11 @@ import com.clevertec.testapp.supermarket.service.CashierService;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Base64;
+
 
 public class CacheInvocationHandler implements InvocationHandler {
     private final CashierService cashierService;
     private Cache cache = new CacheFactory().createCache();
-    ;
-
 
     public CacheInvocationHandler(CashierService cashierService) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         this.cashierService = cashierService;
