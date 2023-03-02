@@ -1,6 +1,7 @@
 package com.clevertec.testapp.supermarket.dao;
 
 import com.clevertec.testapp.supermarket.entity.Cashier;
+import org.junit.Test;
 import org.springframework.util.Assert;
 
 import java.util.ArrayList;
@@ -28,8 +29,11 @@ public class CashierDAO implements DAO<Cashier> {
 
     @Override
     public boolean update(Cashier obj) {
-        map.put(obj.getId(), obj); // просто по ключу заменяет объект в коллекции
-        return true;
+        if (map.containsKey(obj.getId())){
+            map.put(obj.getId(), obj);
+            return true;
+        }else {
+            return false ;}
     }
 
     @Override
@@ -62,4 +66,5 @@ public class CashierDAO implements DAO<Cashier> {
 
         return list;
     }
+
 }

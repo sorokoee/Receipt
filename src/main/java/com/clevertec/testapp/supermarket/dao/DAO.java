@@ -2,9 +2,7 @@ package com.clevertec.testapp.supermarket.dao;
 
 import java.util.List;
 
-// Интерфейс для доступа к данным (API для запросов)
-// Используется паттерн DAO - Data Access Object, чтобы можно было подключать любой источник данных, а API не менялось
-// Минимальный функционал CRUD - create read update delete
+
 public interface DAO<T> {
 
     boolean add(T obj);
@@ -13,10 +11,10 @@ public interface DAO<T> {
 
     boolean delete(Long id) throws IllegalArgumentException ;
 
-    T findById(Long id) throws IllegalArgumentException; // поиск по ID
+    T findById(Long id) throws IllegalArgumentException;
 
-    List<T> findAll(); // поиск всех записей
+    List<T> findAll();
 
-    List<T> find(String text); // поиск по включению текста
+    List<T> find(String text);
 
 }
