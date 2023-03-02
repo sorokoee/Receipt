@@ -64,6 +64,7 @@ class ReceiptApplicationTests {
         receiptBuilder.build();
 
         Assert.isTrue(receiptItem1.getSum() == 90, "must be 90");
+
     }
 
 }
