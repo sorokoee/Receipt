@@ -24,16 +24,20 @@ public class LFUCacheImpl implements Cache {
 
     @Override
     public BaseModel get(Long key) {
-        if (!casheObjects.containsKey(key))
+        if (!casheObjects.containsKey(key)) {
             return null;
+        }
+        BaseModel cacheObject = casheObjects.get(key);
         int count = counters.get(key);
-        counters.put(key, count++);
-        lists.get(count).remove(key);
-        if (count == min && lists.get(count).size() == 0)
+        counters.put(key, count + 1);
+        lists.get(count).remove(cacheObject);
+        if (count == min && lists.get(count).size() == 0) {
             min++;
-        if (!lists.containsKey(count++))
-            lists.put(count++, new LinkedHashSet<>());
-        lists.get(count++).add(key);
+        }
+        if (!lists.containsKey(count + 1)) {
+            lists.put(count + 1, new LinkedHashSet<>());
+        }
+        lists.get(count + 1).add(cacheObject);
         return casheObjects.get(key);
     }
 
@@ -47,16 +51,15 @@ public class LFUCacheImpl implements Cache {
             return;
         }
         if (casheObjects.size() >= capacity) {
-
-            Object evit = lists.get(min).iterator().next();
+            BaseModel evit = (BaseModel) lists.get(min).iterator().next();
             lists.get(min).remove(evit);
-            casheObjects.remove(evit);
-            counters.remove(evit);
+            counters.remove(evit.getId());
+            casheObjects.remove(evit.getId());
         }
         casheObjects.put(obj.getId(), obj);
         counters.put(obj.getId(), 1);
         min = 1;
-        lists.get(1).add(obj.getId());
+        lists.get(1).add(obj);
     }
 
 }
