@@ -7,10 +7,23 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Cashier  {
+public class Cashier extends BaseModel  {
+    private String name;
+    private Character gender;
+    private double salary;
+    private String email;
 
-    private Long id;
-    private String name; // имя или номер кассира
+    public Cashier(Long id, String name) {
+        super(id);
+        this.name = name;
+    }
+
+    public Cashier(Long id, String name, Character gender, double salary, String email) {
+        super(id);
+        this.name = name;
+        this.gender = gender;
+        this.salary = salary;
+        this.email = email;
+    }
 }
